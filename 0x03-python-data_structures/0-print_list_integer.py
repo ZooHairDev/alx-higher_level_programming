@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
 def print_list_integer(my_list=[]):
-  """
+    """
   Prints all integers of a list.
 
   Args:
@@ -11,6 +10,6 @@ def print_list_integer(my_list=[]):
     None.
   """
 
-    for i in my_list:
-        if isinstance(i, int):
-            print(f"{i}")
+  for i in my_list:
+      if type(i) == int:
+          print(f"{i}\n")
