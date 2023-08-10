@@ -6,3 +6,4 @@ while(number < 123):
         continue
     print("{:s}".format(chr(number)), end='')
     number += 1
+   
