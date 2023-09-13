@@ -1,23 +1,29 @@
 #!/usr/bin/python3
 """
-script to save and load
+This script adds all arguemnts to a python list and then saves them to a file
 """
+import json
 from sys import argv
-save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
+load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
 
-filename = 'add_item.json'
-my_list = []
-try:
-    my_list = load_from_json_file(filename)
-except Exception:
-    save_to_json_file(my_list, filename)
+arg_list = []
+if __name__ == '__main__':
+    for argument in argv:
+        # check if it's the first argument
+        if argv.index(argument) == 0:
+            continue
+        # add other arguments to a list
+        arg_list.append(argument)
 
-arg_len = len(argv)
-
-if arg_len > 1:
-    for i in range(1, arg_len):
-        my_list.append(argv[i])
-
-    save_to_json_file(my_list, filename)
+    try:
+        # load existing list
+        new_list = load_from_json_file("add_item.json")
+        # add new list
+        new_list += arg_list
+        # save newly created list
+        save_to_json_file(new_list, "add_item.json")
+    except FileNotFoundError:
+        # if there's no exissting list create it
+        save_to_json_file(arg_list, "add_item.json")
