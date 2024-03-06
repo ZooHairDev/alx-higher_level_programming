@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""takes in a URL, sends a request to the URL and displays the body of the response
-Usage: ./7-error_code.py <URL>
-  - Handles HTTP errors
+"""A script that
+- takes in a URL
+- sends a request to the URL
+- displays the body of the response.
 """
-import requests
 import sys
+import requests
 
 
 if __name__ == "__main__":
